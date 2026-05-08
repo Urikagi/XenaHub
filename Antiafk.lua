@@ -1,25 +1,23 @@
-local Players = game:Getservice("Players")
+local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
-local VirtualUser = game:Getservice("VirtualUser")
+local VirtualUser = game:GetService("VirtualUser")
 
-local currentCamera = Game.Workspace.CurrentCamera
+local currentCamera = workspace.CurrentCamera
 
-player.idled:connect(Fucntional()
-    VirtualUser:Button2Down(Vector2.zero, currentCamera.CFrame)
+player.Idled:Connect(function()
+    VirtualUser:Button2Down(Vector2.new(0,0), currentCamera.CFrame)
     task.wait(1)
-    VirtualUser:Button2Up(Vector2.zero, currentCamera.CFrame)
+    VirtualUser:Button2Up(Vector2.new(0,0), currentCamera.CFrame)
 
     print("Player Successfully UnIdled")
 end)
 
-print("Anti Afk Active")
+print("Anti AFK Active")
 
-local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 
-local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
 local screenGui = Instance.new("ScreenGui")
@@ -77,6 +75,7 @@ end)
 UserInputService.InputChanged:Connect(function(input)
 	if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
 		local delta = input.Position - dragStart
+
 		frame.Position = UDim2.new(
 			startPos.X.Scale,
 			startPos.X.Offset + delta.X,
